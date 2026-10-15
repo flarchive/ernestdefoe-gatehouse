@@ -1,0 +1,79 @@
+# Gatehouse
+
+Approve new members before they get in. Sign-ups from addresses you trust activate as normal; everyone else waits in a queue until an admin approves or declines them.
+
+Made for forums with an eligibility rule (a university, a club, a company, a private group), and just as useful against a wave of spam sign-ups.
+
+![The approval queue: an applicant waiting, with Approve and Decline](screenshots/queue.png)
+
+## How it works
+
+- **Trusted addresses walk straight in.** List the domains you trust, such as `.edu`, `uni-freiburg.de` or `@staff.example.org`. Those sign-ups get the normal activation email and carry on as usual.
+- **Everyone else waits.** They can sign up, but until an admin approves them they have exactly a visitor's permissions: they can read what a guest can, and post nothing. A notice at the top of the forum tells them why.
+- **Ask them a question.** Put your own question on the sign-up form, such as *"Why would you like to join?"* or *"Your student ID?"*, optional or required. You read the answer in the queue, in your notification and in your email.
+- **They hear about it.** Applicants get an email saying their account is being reviewed, with any extra text you add, for example *"reply with your student ID"*. Admins get a notification and an email with the applicant's answer and a link to the queue; each admin can switch either off in their own notification settings.
+- **One click to decide.** **Approve** sends the applicant their activation link and lets them in. **Decline** emails them, and they can't sign in. A declined applicant can still be approved later.
+- **Refuse addresses outright.** A second list turns addresses away at the sign-up form, before any account is made.
+- **Reserve usernames.** Keep `admin`, `moderator` and your brand's name for yourselves.
+
+![What a waiting member sees](screenshots/notice.png)
+
+## Patterns
+
+One per line, in either list:
+
+| Pattern | Matches |
+|---|---|
+| `uni-freiburg.de` | that domain and its subdomains, never a look-alike such as `baduni-freiburg.de` |
+| `@zv.uni-freiburg.de` | exactly that domain |
+| `.edu`, `.ac.uk` | any domain ending that way |
+| `*@example.com` | a wildcard over the whole address (`*` and `?`) |
+| `/^staff\..+@example\.org$/i` | a regular expression between slashes |
+
+Lines starting with `#` are comments. **Leave the first list empty to approve every new member by hand.**
+
+![The rules](screenshots/rules.png)
+
+## Reserved usernames
+
+A third list keeps names for staff and your brand: `admin`, `moderator`, `support`, `yourforum*`. Nobody but an admin can sign up with one, **or rename themselves to one later**, so "dave" can't become "admin" next week. Names aren't case-sensitive, and `*` works as a wildcard (`admin*` also covers `Administrator` and `admin2`).
+
+This list works on its own: you can reserve names without holding anybody for approval.
+
+## Good to know
+
+- **Existing members are never affected**, and nor are members an admin adds by hand. The check happens once, at sign-up; changing an email address later doesn't send anyone back to the queue.
+- **The lock is the permissions, not the email.** Flarum signs a new member in as soon as they register, and an activation link can be requested again from the forum. So while waiting or declined, a member's permissions are those of a visitor, whatever happens with their email.
+- **No hint to strangers.** Signing in as a waiting or declined member explains why only when the password is right. With a wrong password it's Flarum's usual "incorrect" message, so the form can't be used to find out who applied.
+- **The activation link waits too.** Applicants aren't sent the activation link at sign-up; it comes with the approval, so confirming the address and being let in happen together.
+- **Only waiting addresses must answer.** A required question is never demanded of a trusted address, since they walk straight in and nobody reads it.
+- **Emails in the junk folder?** Gatehouse sends through your forum's own mail settings, like Flarum's password resets. If those land in junk too, it's the sending domain: set up SPF, DKIM and DMARC for it, send from an address on your forum's domain, or use a transactional service such as Mailgun, Postmark or Amazon SES. Admin → Email has a **Send Test Mail** section, and [mail-tester.com](https://www.mail-tester.com) scores a test message and says what to fix.
+- **Email is best-effort.** If the mail server is down, the applicant is still held; the failure is logged.
+
+## Installation
+
+```sh
+composer require ernestdefoe/gatehouse
+php flarum migrate
+php flarum cache:clear
+```
+
+Then enable **Gatehouse**, switch on **Hold new sign-ups for approval** and fill in the lists.
+
+## Updating
+
+```sh
+composer update ernestdefoe/gatehouse
+php flarum migrate
+php flarum cache:clear
+```
+
+## Support
+
+- **Support forum:** [Gatehouse on ernestdefoe.online](https://ernestdefoe.online/d/120)
+- **Flarum community:** [Gatehouse on discuss.flarum.org](https://discuss.flarum.org/d/39995-gatehouse)
+- **Bug reports:** [GitHub issues](https://github.com/ernestdefoe/gatehouse/issues)
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
