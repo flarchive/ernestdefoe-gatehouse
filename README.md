@@ -2,20 +2,13 @@
 
 > **Read-only archive of released versions of ernestdefoe/gatehouse.** Not for installation: use [Packagist](https://packagist.org/packages/ernestdefoe/gatehouse) or the [upstream repository](https://github.com/ernestdefoe/gatehouse).
 
-**8** versions archived · Latest: [`1.4.1`](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.4.1) · License: `MIT` · Flarum: `^2.0`
+**0** versions archived · Latest: [`1.5.0`](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.5.0) · License: `MIT` · Flarum: `^2.0`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| `1.0.0` | 2026-10-03 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.0.0) |
-| `1.1.0` | 2026-10-03 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.1.0) |
-| `1.2.0` | 2026-10-03 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.2.0) |
-| `1.2.1` | 2026-10-05 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.2.1) |
-| `1.3.0` | 2026-10-14 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.3.0) |
-| `1.3.1` | 2026-10-15 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.3.1) |
-| `1.4.0` | 2026-10-20 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.4.0) |
-| `1.4.1` | 2026-11-02 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-gatehouse/tree/archive/v1.4.1) |
+| — | — | — | — |
 
 Catalog entry: [packages/ernestdefoe-gatehouse.json](https://github.com/flarchive/archive-index/blob/main/packages/ernestdefoe-gatehouse.json)
 
